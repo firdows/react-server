@@ -1,21 +1,36 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
+app.use(bodyParser.json({
+    type: '*/*'
+}));
 
-app.get('/',(req,res)=>{
+
+app.get('/', (req, res) => {
     res.send('Root Page');
 })
 
-app.get('/member',(req,res)=>{
+app.get('/member', (req, res) => {
     res.send('Member Page');
 })
 
-app.get('/order',(req,res)=>{
+app.get('/order', (req, res) => {
     res.send('Order Page');
 })
 
-app.get('/order/:orderId',(req,res)=>{
-    res.send('Order Page get Id='+req.params.orderId);
+app.get('/order/:orderId', (req, res) => {
+    res.send('Order Page get Id=' + req.params.orderId);
+})
+
+app.post('/order', (req, res) => {
+    console.log(req.body)
+    res.json({
+        status: 'ok'
+    })
 })
 
 
