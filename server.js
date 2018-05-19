@@ -14,6 +14,10 @@ app.get('/order',(req,res)=>{
     res.send('Order Page');
 })
 
+app.get('/order/:orderId',(req,res)=>{
+    res.send('Order Page get Id='+req.params.orderId);
+})
+
 
 app.listen(8000, () => {
     console.log('ready on http://localhost:8000')
